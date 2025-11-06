@@ -86,7 +86,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
     <div class="container">
       <a class="navbar-brand fw-bold" href="{{ route('home') }}">
-        🐢 Penangkaran Penyu Cilacap
+        Penangkaran Penyu Cilacap
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
@@ -154,7 +154,7 @@
       <div class="row g-4">
         <div class="col-md-4">
           <div class="card turtle-card h-100 shadow-sm">
-            <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400" class="card-img-top" alt="Penyu Hijau">
+            <img src="https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?w=400" class="card-img-top" alt="Penyu Hijau">
             <div class="card-body">
               <h5 class="card-title fw-bold">Penyu Hijau</h5>
               <p class="card-text">Penyu hijau (Chelonia mydas) adalah salah satu spesies penyu laut terbesar. Dinamakan "hijau" karena warna lemak di bawah karapasnya.</p>
@@ -172,7 +172,7 @@
         </div>
         <div class="col-md-4">
           <div class="card turtle-card h-100 shadow-sm">
-            <img src="https://images.unsplash.com/photo-1583537148062-1db5f0c90043?w=400" class="card-img-top" alt="Penyu Lekang">
+            <img src="https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?w=400" class="card-img-top" alt="Penyu Lekang">
             <div class="card-body">
               <h5 class="card-title fw-bold">Penyu Lekang</h5>
               <p class="card-text">Penyu lekang (Lepidochelys olivacea) adalah penyu laut terkecil. Sering ditemukan di pantai-pantai Indonesia.</p>

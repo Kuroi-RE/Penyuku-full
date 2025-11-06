@@ -1,0 +1,5 @@
+# Ignore Blade files to prevent auto-formatting JavaScript inside
+*.blade.php
+
+# Or specifically ignore posts view
+resources/views/posts/index.blade.php

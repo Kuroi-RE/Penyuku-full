@@ -296,13 +296,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-    // CSRF Token Setup
-    $.ajaxSetup({
-      headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
-    });
-
     // Toggle Custom Dropdown
     function toggleDropdown(postId) {
       // Close all other dropdowns
@@ -329,15 +322,19 @@
     // Toggle Like
     function toggleLike(postId) {
       $.ajax({
-        url: `/posts/${postId}/like`
-        , type: 'POST'
-        , success: function(response) {
+        url: `/posts/${postId}/like`,
+        type: 'POST',
+        data: {
+          _token: $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function(response) {
           const btn = $(`.btn-like[data-post-id="${postId}"]`);
           btn.toggleClass('liked', response.liked);
           btn.find('.likes-count').text(response.likes_count);
-        }
-        , error: function(xhr) {
+        },
+        error: function(xhr) {
           console.error('Error:', xhr);
+          console.error('Response:', xhr.responseText);
           alert('Terjadi kesalahan saat menyukai postingan!');
         }
       });
@@ -353,24 +350,26 @@
       event.preventDefault();
 
       const input = $(`#comment-input-${postId}`);
-      const body = input.val();
+      const content = input.val();
 
       $.ajax({
-        url: `/posts/${postId}/comment`
-        , type: 'POST'
-        , data: {
-          body: body
-        }
-        , success: function(response) {
+        url: `/posts/${postId}/comment`,
+        type: 'POST',
+        data: {
+          body: content,
+          _token: $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function(response) {
           $(`#comments-list-${postId}`).append(response.html);
           input.val('');
 
           // Update comment count
           const currentCount = parseInt($(`#post-${postId} .comments-count`).text());
           $(`#post-${postId} .comments-count`).text(currentCount + 1);
-        }
-        , error: function(xhr) {
+        },
+        error: function(xhr) {
           console.error('Error:', xhr);
+          console.error('Response:', xhr.responseText);
           alert('Terjadi kesalahan saat menambahkan komentar!');
         }
       });
@@ -381,9 +380,13 @@
       if (!confirm('Yakin ingin menghapus komentar ini?')) return;
 
       $.ajax({
-        url: `/comments/${commentId}`
-        , type: 'DELETE'
-        , success: function(response) {
+        url: `/comments/${commentId}`,
+        type: 'POST',
+        data: {
+          _method: 'DELETE',
+          _token: $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function(response) {
           $(`#comment-${commentId}`).fadeOut(300, function() {
             $(this).remove();
           });
@@ -391,9 +394,10 @@
           // Update comment count
           const currentCount = parseInt($(`#post-${postId} .comments-count`).text());
           $(`#post-${postId} .comments-count`).text(currentCount - 1);
-        }
-        , error: function(xhr) {
+        },
+        error: function(xhr) {
           console.error('Error:', xhr);
+          console.error('Response:', xhr.responseText);
           alert('Terjadi kesalahan saat menghapus komentar!');
         }
       });
@@ -453,4 +457,7 @@
     }, 5000);
 
   </script>
+  
+  <!-- External JS file (protected from auto-formatter) -->
+  <script src="{{ asset('js/posts.js') }}"></script>
 </x-app-layout>

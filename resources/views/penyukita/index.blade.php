@@ -5,7 +5,7 @@
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
       <div class="text-center">
         <h1 class="text-4xl md:text-5xl font-bold mb-4">
-          🐢 PenyuKita - Bersama Lindungi Penyu
+          PenyuKita - Bersama Lindungi Penyu
         </h1>
         <p class="text-xl md:text-2xl mb-8 text-teal-100">
           Blog & Kegiatan Konservasi Penyu Cilacap

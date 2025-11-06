@@ -16,10 +16,10 @@ use App\Http\Controllers\UserProfileController;
 // Landing Page (Public - Hanya untuk Guest)
 Route::get('/', [HomeController::class, 'index'])->middleware('guest')->name('home');
 
-// Redirect authenticated users dari home ke penyukita
-Route::get('/', function () {
-    return redirect()->route('penyukita.index');
-})->middleware('auth');
+// // Redirect authenticated users dari home ke penyukita
+// Route::get('/', function () {
+//     return redirect()->route('penyukita.index');
+// })->middleware('auth');
 
 // PenyuKita (Authenticated Users Only)
 Route::middleware('auth')->group(function () {
